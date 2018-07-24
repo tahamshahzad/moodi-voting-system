@@ -92,16 +92,16 @@ class RegistrationForm extends React.Component {
         const { mockData } = this.state;
 
         let counter = 0;
-        console.log(mockData);
+      
         const finalVoters = mockData.map((voter, index, array) => {
           if (
             voter.key === candidates[counter] &&
             counter < candidates.length
           ) {
             counter++;
-            return { ...voter, voter: true };
+            return { ...voter, candidate: true };
           } else {
-            return { ...voter, voter: false };
+            return { ...voter, candidate: false };
           }
         });
 
