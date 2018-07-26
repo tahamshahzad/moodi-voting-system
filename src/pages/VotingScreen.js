@@ -2,7 +2,7 @@ import { Card, Col, Row, Button } from "antd";
 import { Redirect } from "react-router-dom";
 import { db } from "../firebase-init";
 import React from "react";
-
+import "./VotingScreen.css";
 class votingScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -97,7 +97,7 @@ class votingScreen extends React.Component {
   }
   renderMember(voter, key) {
     return (
-      <Col key={key} span={12}>
+      <Col key={key} span={20}>
         <Card title={voter.title} bordered={true}>
           <Button onClick={this.handleVote} email={voter.email}>
             Vote
@@ -111,9 +111,9 @@ class votingScreen extends React.Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div>
+      <div className = "form-wrapper">
         <div style={{ background: "#ECECEC", padding: "20px" }}>
-          <Row gutter={24}>{this.state.voters ? this.state.voters : null}</Row>
+          <Row gutter={30}>{this.state.voters ? this.state.voters : null}</Row>
         </div>
       </div>
     );

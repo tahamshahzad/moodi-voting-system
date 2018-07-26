@@ -9,9 +9,15 @@
     height: 200px;
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+    margin-top: 20px;
 }
 .date-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.tranfer-container {
     display: flex;
     width: 100%;
     justify-content: center;

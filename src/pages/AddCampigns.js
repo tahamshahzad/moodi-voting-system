@@ -68,8 +68,8 @@ class RegistrationForm extends React.Component {
       for (let member of data) {
         const memberData = {
           key,
-          title: member.first_name,
-          email: member.emal_address,
+          title: member.name,
+          email: member.email,
           password: member.password
         };
         key++;

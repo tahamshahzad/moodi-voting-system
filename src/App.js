@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginScreen from "./pages/LoginScreen";
 import AddCampaign from "./pages/AddCampigns";
 import VotingScreen from "./pages/VotingScreen";
+import ListCampaigns from "./pages/ListCampaigns"
 
 import "./App.css";
 
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/login" component={LoginScreen} />
           <Route path="/add-campaign" component={AddCampaign} />
           <Route path="/voting-screen" component={VotingScreen} />
+          <Route path="/list-campaigns" component={ListCampaigns}/>
         </Switch>
       </BrowserRouter>
     );

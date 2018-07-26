@@ -7,5 +7,6 @@
     projectId: "moodi-voting-system",
     storageBucket: "moodi-voting-system.appspot.com",
     messagingSenderId: "995293647603"
+    
   };
 export default config;
