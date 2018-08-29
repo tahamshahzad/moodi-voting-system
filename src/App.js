@@ -7,7 +7,7 @@ import LoginScreen from "./pages/LoginScreen";
 import AddCampaign from "./pages/AddCampigns";
 import VotingScreen from "./pages/VotingScreen";
 import ListCampaigns from "./pages/ListCampaigns"
-
+import EETesting from "./pages/EETesting" 
 import "./App.css";
 
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
           <Route path="/add-campaign" component={AddCampaign} />
           <Route path="/voting-screen" component={VotingScreen} />
           <Route path="/list-campaigns" component={ListCampaigns}/>
+          <Route path="/ee-tests" component={EETesting}/>
         </Switch>
       </BrowserRouter>
     );

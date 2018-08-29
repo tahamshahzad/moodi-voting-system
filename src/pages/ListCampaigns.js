@@ -3,29 +3,48 @@ import { Redirect } from "react-router-dom";
 import { db } from "../firebase-init";
 import { Card, Col, Row, Button } from "antd";
 
-
-
 class ListCampaigns extends React.Component {
-  
-  findDocuments (){
-  db.collection("campaigns").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        var campaignName;
-        const arrayofCampaignName = doc.map(
-          {campaignName} = doc.data
-        )
-        var documentIDs = doc.id;
-        arrayofCampaignName.push(documentIDs);
-        console.log(arrayofCampaignName)
-    });
-  });
-  }
-  render(){
+  state = { 
+    ids: [], 
+    names: [],
+    elementts: []
+  };
+
+  componentDidMount() {
+    this.findDocuments();
+    
+  }   
+
+  findDocuments = () => {
+    db.collection("campaigns")
+      .get()
+      .then(querySnapshot => {
+        var data_id = [];
+        var name = [];
+        var elements = [];
+        querySnapshot.forEach(function(doc) {
+          data_id.push(doc.id);
+          var {campaignName} = doc.data();
+          name.push(campaignName);
+        });
+        for(var i=0;i<name.length;i++){
+          // push the component to elements!
+         elements.push(<Card value={ name[i] } />);
+        }
+        this.setState({ ids: data_id, names: name, elementts: elements });
+      });
+  };
+
+  render() {
     return (
       <div>
-      <Button onClick={this.findDocuments}/>
-    </div>
+        <ol>
+        {this.state.names.map(document => (
+          <li key={document}>{document}</li>
+        ))}
+        </ol>
+        {this.state.elementts}
+      </div>
     );
   }
 }

@@ -39,9 +39,7 @@ class votingScreen extends React.Component {
     // the candidates email
     const candidateEmail = e.target.getAttribute("email");
 
-    const campaignRef = await db
-      .collection("campaigns")
-      .doc(window.campaign.cid);
+    const campaignRef = await db.collection("campaigns").doc(window.campaign.cid);
 
     const campaign = await campaignRef.get();
     const campaignData = campaign.data();
