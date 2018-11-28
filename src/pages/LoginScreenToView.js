@@ -59,7 +59,7 @@ class LoginScreen extends React.Component {
 
   render() {
     if (this.state.loggedIn) {
-      return <Redirect to={`/voting-screen`} />;
+      return <Redirect to={`/view-screen`} />;
     }
     const { getFieldDecorator } = this.props.form;
     return (

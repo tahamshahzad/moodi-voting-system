@@ -9,7 +9,8 @@ class votingScreen extends React.Component {
     this.renderMember = this.renderMember.bind(this);
     this.handleVote = this.handleVote.bind(this);
     this.state = {
-      voters: null
+      voters: null,
+      campaignName: null
     };
   }
 
@@ -17,17 +18,19 @@ class votingScreen extends React.Component {
     const { campaign } = window;
     if (campaign) {
       const voters = campaign.data.members.filter(member => {
-        return member.voter && member;
+        return member.candidate && member;
       });
 
-      const voterComponents = voters.map((voter, index) => {
-        return this.renderMember(voter, index);
+      const voterComponents = voters.map((candidate, index) => {
+        return this.renderMember(candidate, index);
       });
-
+      const campaignNameComponents= campaign.data.campaignName
+      console.log(campaignNameComponents)
       console.log(voterComponents);
       this.setState(prevState => ({
         ...prevState,
-        voters: voterComponents
+        voters: voterComponents,
+        campaignName: campaignNameComponents
       }));
     }
   }
@@ -93,11 +96,11 @@ class votingScreen extends React.Component {
 
 
   }
-  renderMember(voter, key) {
+  renderMember(candidate, key) {
     return (
-      <Col key={key} span={20}>
-        <Card title={voter.title} bordered={true}>
-          <Button onClick={this.handleVote} email={voter.email}>
+      <Col key={key} span={50}>
+        <Card className = "text-wrapper" title={candidate.title} bordered={true}>
+          <Button onClick={this.handleVote} email={candidate.email}>
             Vote
           </Button>
         </Card>
@@ -111,7 +114,8 @@ class votingScreen extends React.Component {
     return (
       <div className = "form-wrapper">
         <div style={{ background: "#ECECEC", padding: "20px" }}>
-          <Row gutter={30}>{this.state.voters ? this.state.voters : null}</Row>
+        <h1 className = "text-wrapper">{this.state.campaignName}</h1>,
+          <Row gutter={50}>{this.state.voters ? this.state.voters : null}</Row>
         </div>
       </div>
     );

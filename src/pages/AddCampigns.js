@@ -114,8 +114,14 @@ class RegistrationForm extends React.Component {
             endDate: finalEndDate,
             members : finalVoters            
         })
-          alert(`Campaign has been created!`);   
-        }catch (e) {
+        .then(function(docRef) {
+          console.log('The auto-generated ID is', docRef.id)
+          var documentName = docRef.id
+          alert(documentName+"Campaign has been created!",);
+          })
+             
+          }
+            catch (e) {
           alert(`There was an error creating a campaign`);
         }       
       }
